@@ -1,0 +1,148 @@
+import random 
+
+a1=1
+a2=1
+pontos = 100
+record2=0
+record = 0
+ultimojogo = 0
+opcoes = ["⭐️ " , "🍒 ",  "🥝 "]
+
+while a1 == 1:
+
+    print("\n=====CAÇA-PYTHON=====\n")
+    print("======RECORD {}=======".format(record))
+    print("====ULTIMO-JOGO {}====\n".format(ultimojogo))
+    print("[1]JOGAR")
+    print("[2]COMO FUNCIONA\n")
+    a2 = int(input(""))
+
+    while a2 == 1:
+    
+        aposta = int(input("\nQuanto você quer apostar\nsaldo {}\n\n".format(pontos)))
+        
+        if aposta > pontos:
+            print("\nVocê não tem todos\nEsses pontos")
+            a2 = int(input("[1]Voltar para a aposta \n\n"))
+        
+        elif aposta <= pontos:
+            escolha = random.choices(opcoes, k=3)
+            linha1 = f"{escolha[0]} {escolha[1]} {escolha[2]}"
+                
+            if linha1 == "⭐️  ⭐️  ⭐️ " :
+                n1 = 2 * aposta
+                
+            elif   linha1 == "🍒  🍒  🍒 ": 
+               n1=2  * aposta
+                
+            elif linha1 == "🥝  🥝  🥝 ":
+                n1=2 * aposta
+                   
+            else :
+                n1 = aposta * 0
+                
+            escolha = random.choices(opcoes, k=3)     
+            linha2 = f"{escolha[0]} {escolha[1]} {escolha[2]}"
+                
+            if linha2 == "⭐️  ⭐️  ⭐️ " :
+                n2 =3 * aposta
+                
+            elif   linha2 == "🍒  🍒  🍒 ":
+                n2= 3  * aposta
+                
+            elif linha2 == "🥝  🥝  🥝 ":
+                n2=3* aposta
+                   
+            else :
+                n2 =  aposta *0
+                        
+            escolha = random.choices(opcoes, k=3)
+            linha3 = f"{escolha[0]} {escolha[1]} {escolha[2]}"
+            if linha3 == "⭐️  ⭐️  ⭐️ " :
+                n3 = 2* aposta
+                
+            elif  linha3 == "🍒  🍒  🍒 ":
+                n3=2  * aposta
+                
+            elif linha3 == "🥝  🥝  🥝 ":
+                n3=2 * aposta
+                   
+            else :
+                n3 = aposta*0
+            
+            if linha1 == linha2 == linha3 == "⭐️  ⭐️  ⭐️ ": 
+                n4=10*aposta
+                jack=("🍒🥝⭐️JACKPOT⭐️🥝🍒")
+        
+            elif linha1 == linha2 == linha3 == "🥝  🥝  🥝 ":
+                n4=10*aposta
+                jack=("🍒🥝⭐️JACKPOT⭐️🥝🍒")
+                
+            elif linha1 == linha2 == linha3 == "🍒  🍒  🍒 ":
+                n4=10*aposta
+                jack=("🍒🥝⭐️JACKPOT⭐️🥝🍒")
+
+            else:
+                jack=("                  ")
+                n4 = 0
+                
+            print("\n")    
+            print(
+                "╔═════════════════════════════════╗")
+            print("║        🎰 CAÇA-PYTHON 🎰       ║")
+            print(
+                "╠═════════════════════════════════╣")
+            print("║                                ║")
+            print(f"║       2x- {linha1}          ║")
+            print(f"║       3x- {linha2}          ║")
+            print(f"║       2x- {linha3}          ║")
+            print("║                                ║")
+            print("║            [ GIRAR ]           ║")
+            print("║       {}       ║".format(jack))
+            print( 
+                "╚═════════════════════════════════╝")
+                
+            if n1 == n2 == n3 == 0:
+                resultado = pontos - aposta
+                print ("Você perdeu {} pontos\nRestam {}\n".format(aposta,resultado))
+                pontos = resultado
+                if  pontos <1:
+                    print("VOCÊ PERDEU")
+                    pontos = 100
+                    
+                            
+            else:
+                resultado=n1+n2+n3+n4
+                pontos= pontos-aposta
+                pontos= (pontos+resultado)
+                record2=pontos
+                print ("Você ganhou {} pontos\nSeu total de pontos agora é {}.".format(resultado, pontos))
+                      
+            continuar = int(input("Deseja apostar novamente?\n[1]sim\n[2]não\n\n"))
+                
+            if continuar == 1:
+                continuar= a2 = 1
+                          
+            elif continuar == 2:
+                continuar = a1=1
+                if pontos >= record2:
+                    record = pontos
+                    pontos=100
+                    break
+                    
+                    
+                    
+                    
+                
+                else :
+                    ultimojogo=pontos
+                    pontos=100
+                    a1=1
+                    break
+                    
+                        
+    if a2 == 2:
+        print("Você escolhe quanto quer apostar")
+        print("o valor é ultiplicado \nConforme indicado na linha")
+        print("Quando o valor chegar a 0 você \nFicara devendo e perdera o jogo\n")
+        a2 = (input("APERTE ENTER PARA VOLTAR\n\n"))
